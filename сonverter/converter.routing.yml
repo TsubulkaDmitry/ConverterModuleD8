@@ -1,0 +1,7 @@
+converter.routing:
+  path: '/converter'
+  defaults:
+    _title: 'Exchange rates'
+    _controller: '\Drupal\converter\Controller\ConverterController::run'
+  requirements:
+    _permission: 'access content'

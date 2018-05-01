@@ -1,0 +1,10 @@
+<p>
+  {% for item in items %}
+      {% if item.currency_name %}
+       {{ item.currency_name }} -
+      {% endif %}
+      {% if item.currency_value %}
+        {{ item.currency_value }} <br>
+      {% endif %}
+  {% endfor %}
+</p>

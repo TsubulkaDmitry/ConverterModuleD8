@@ -1,0 +1,5 @@
+converter.link:
+  title: 'Currency'
+  parent: system.admin
+  route_name: converter.routing
+  weight: 100

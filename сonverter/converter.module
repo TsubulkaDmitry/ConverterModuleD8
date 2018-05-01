@@ -1,0 +1,47 @@
+<?php
+
+/**
+* Implements hook_cron().
+*/
+function converter_cron() {
+  //Загружаемые валюты USD, GBP, RUB, UAH, BYN
+  $serverQuery = file_get_contents("http://data.fixer.io/api/latest?access_key=9926ddcfe7f35ac7d634afd65e2dcb6e&symbols=USD,GBP,RUB,UAH,BYN&format=1");
+  $serverResponse = json_decode($serverQuery,true);
+
+  foreach ($serverResponse['rates'] as $key=>$value){
+
+    $query = \Drupal::database()->select('currency', 'cur');
+    $query->addField('cur', 'currency_name');
+    $query->condition('cur.currency_name', $key);
+    $result = $query->execute()->fetchField();
+
+    if ($result){
+      $query = \Drupal::database()->update('currency');
+      $query->fields(array(
+        'currency_value' => $value
+      ));
+      $query->condition('currency_name', $key);
+      $query->execute();
+    }else{
+      $query = \Drupal::database()->insert('currency');
+      $query->fields([
+        'currency_name' => $key,
+        'currency_value' => $value,
+      ]);
+      $query->execute();
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function converter_theme($existing, $type, $theme, $path) {
+  return [
+    'converter_admin_page' => [
+      'variables' => [
+        'items' => NULL,
+      ],
+    ]
+  ];
+}

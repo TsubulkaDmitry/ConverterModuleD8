@@ -1,0 +1,5 @@
+name: Converter
+description: 'Custom module to convert currencies'
+type: module
+package: Custom
+core: 8.x

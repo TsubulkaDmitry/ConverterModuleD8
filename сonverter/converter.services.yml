@@ -1,0 +1,3 @@
+services:
+  converter.convert:
+    class: Drupal\converter\Service\ConvertService

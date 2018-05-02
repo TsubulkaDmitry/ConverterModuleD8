@@ -11,7 +11,7 @@ function converter_cron() {
 
     $query = \Drupal::database()->select('currency', 'cur');
     $query->addField('cur', 'currency_name');
-    $query->condition('cur.currency_name', $key);cd m
+    $query->condition('cur.currency_name', $key);
     $result = $query->execute()->fetchField();
 
     if ($result){

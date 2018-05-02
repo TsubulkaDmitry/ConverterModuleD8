@@ -5,7 +5,6 @@
  * Implements hook_schema()
  */
 function converter_schema() {
-
   $schema['currency'] = array(
     'description' => 'Table with currencies and their values',
     'fields' => array(

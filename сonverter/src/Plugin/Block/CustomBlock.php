@@ -1,11 +1,14 @@
 <?php
+
 /**
  * @file
  * Contains \Drupal\converter\Plugin\Block\CustomBlock.
  */
+
 namespace Drupal\converter\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+
 /**
  * Provides a 'article' block.
  *
@@ -26,7 +29,7 @@ class CustomBlock extends BlockBase {
     );
   }
 
-  private function test (){
+  private function test(){
     return \Drupal::service('converter.convert')->convert(1,'USD','BYN');
   }
 }

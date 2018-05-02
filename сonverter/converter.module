@@ -8,7 +8,6 @@ function converter_cron() {
   $serverQuery = file_get_contents("http://data.fixer.io/api/latest?access_key=9926ddcfe7f35ac7d634afd65e2dcb6e&symbols=USD,GBP,RUB,UAH,BYN&format=1");
   $serverResponse = json_decode($serverQuery,true);
   foreach ($serverResponse['rates'] as $key=>$value){
-
     $query = \Drupal::database()->select('currency', 'cur');
     $query->addField('cur', 'currency_name');
     $query->condition('cur.currency_name', $key);

@@ -12,7 +12,7 @@ class ConverterController {
       '#theme' => 'converter_admin_page',
       '#items' => $result,
     ];
-    return $results;
 
+    return $results;
   }
 }
